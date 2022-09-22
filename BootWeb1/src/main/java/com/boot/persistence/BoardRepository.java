@@ -1,0 +1,11 @@
+package com.boot.persistence;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+
+import com.boot.domain.Board;
+
+public interface BoardRepository extends JpaRepository<Board, Long>{
+	
+	
+}
