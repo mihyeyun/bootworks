@@ -19,3 +19,10 @@ h2{padding-top: 20px;}
 /* main */
 .main_img_container{margin:0 auto; text-align: center}
 .main_img{width:300px; height: 300px; border-radius: 10px}
+
+/* getBoard Ω∫≈∏¿œ */
+.tbl_view{width: 700px; margin: 0 auto;}
+.tbl_view, td{border: 1px solid #ccc; border-collapse: collapse;}
+.tbl_view td{padding: 10px}
+.tbl_view input{width:580px; height: 25px;}
+.tbl_view textarea{width:580px;}
