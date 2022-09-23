@@ -21,11 +21,6 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	@GetMapping("/hello")
-	public String hello() {
-		log.info("hello Page 진입");
-		return "hello";
-	}
 	
 	@GetMapping("/getBoardList")
 	public String getBoardList(Model model) {
@@ -83,9 +78,9 @@ public class BoardController {
 	}
 	
 	//main 페이지 이동
-	@RequestMapping(value="/")
+	/*@RequestMapping(value="/")
 	public String index() {
 		log.info("main 페이지 진입");
 		return "index";
-	}
+	}*/
 }

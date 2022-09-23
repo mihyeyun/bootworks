@@ -38,20 +38,20 @@ public class QueryMethodTest {
 	
 	/*@Test
 	public void testFindByTitle() {
-		List<Board> boardList = boardRepo.findByTitle("테스트 제목 10");
+		List<Board> boardList = boardRepo.findByTitle("테스트 제목 130");
 		log.info("검색 결과");
 		for(Board board : boardList) {
 			log.info("--->" + board.toString());
 		}
 	}*/
 	
-	/*@Test
+	@Test
 	public void testFindByContentContaining() {
 		List<Board> boardList = boardRepo.findByContentContaining("17");
 		for(Board board : boardList) {
 			log.info("--->" + board.toString());
 		}
-	}*/
+	}
 	
 	/*@Test
 	public void testFindByTitleContainingOrContentContaining() {
@@ -61,12 +61,12 @@ public class QueryMethodTest {
 		}
 	}*/
 	
-	@Test
+	/*@Test
 	public void testFindByTitleContainingOrderBySeqDesc() {
 		List<Board> boardList = boardRepo.findByTitleContainingOrderBySeqDesc("18");
 		for(Board board : boardList) {
 			log.info("--->" + board.toString());
 		}
-	}
+	}*/
 	
 }

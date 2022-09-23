@@ -26,7 +26,7 @@
 				<c:forEach items="${boardList }" var="board">
 					<tr>
 						<td><c:out value="${board.seq }" /></td>
-						<td><c:out value="${board.title }" /></td>
+						<td><a href='/getBoard?seq=<c:out value="${board.seq }" />'><c:out value="${board.title }" /></a></td>
 						<td><c:out value="${board.writer }" /></td>
 						<%-- <td><c:out value="${board.createDate }" /></td> --%>
 						<td><fmt:formatDate value="${board.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
