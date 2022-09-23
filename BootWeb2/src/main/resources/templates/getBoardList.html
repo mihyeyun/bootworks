@@ -20,8 +20,10 @@
 			<tbody>
 				<tr th:each="board : ${boardList}">
 					<td th:text="${board.seq}"></td>
-					<td 
-						th:text="${board.title}"></td>
+					<td>
+						<a th:href="@{/getBoard(seq=${board.seq})}"
+						   th:text="${board.title}"></a>
+					</td>
 					<td th:text="${board.writer}"></td>
 					<td th:text="${board.createDate}"></td>
 					<td th:text="${board.cnt}"></td>
