@@ -6,14 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.boot.domain.Board;
+import com.boot.domain.Member;
 import com.boot.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
 
+//'member'를 세션에 저장
+@SessionAttributes("member")
 @Slf4j
 @Controller
 public class BoardController {
@@ -21,6 +25,11 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
+	//인증 상태 유지하기
+	@ModelAttribute("member")
+	public Member setMember() {
+		return new Member();
+	}
 	
 	@GetMapping("/getBoardList")
 	public String getBoardList(Model model) {
@@ -32,9 +41,14 @@ public class BoardController {
 	
 	//새글 등록 폼 페이지 요청
 	@GetMapping("/insertBoard")
-	public String insertBoard() {
+	public String insertBoard(@ModelAttribute("member") Member member) {
 		log.info("insertBoard 페이지 진입");
-		return "insertBoard";
+		//로그인한 사용자만 글쓰기 가능
+		if(member.getId() == null) {
+			return "redirect:login";
+		}else {
+			return "insertBoard";
+		}	
 	}
 	
 	//새글 등록 처리
