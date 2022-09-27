@@ -10,11 +10,20 @@
 		<h2>BootWeb2 main page</h2>
 	</div>
 	
-	<a th:href="@{/getBoardList}">게시판 바로가기</a>&nbsp;&nbsp;
-	<p><a th:href="@{/login}">로그인</a></p>
+	<p>
+	<a th:href="@{/getBoardList}">게시판 바로가기 |</a>
+	<a th:href="@{/login}">로그인</a>&nbsp;
+	</p>
+	
 	<div class="main_img_container">
 		<img src="/static/images/bg2.jpg" class="main_img" id="pic">	
 	</div>	
+	
+	<p>
+		<a href="boardError">BoardException 발생 |</a> 
+		<a href="illegalArgumentError">illegalArgumentException 발생 |</a>
+		<a href="sqlError">SQLException 발생</a>
+	</p>
 	
 </body>
 </html>

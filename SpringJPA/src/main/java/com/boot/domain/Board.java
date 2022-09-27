@@ -13,7 +13,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
+//순환 참조를 하므로 member 객체를 제외함
+@ToString(exclude="member")
 @Getter
 @Setter
 @Entity		//DB 테이블을 만드는 어노테이션

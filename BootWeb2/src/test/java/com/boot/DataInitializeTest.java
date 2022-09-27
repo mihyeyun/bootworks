@@ -21,7 +21,7 @@ public class DataInitializeTest {
 	@Test
 	public void testDataInsert() {
 		//회원 저장
-		/*Member member1 = new Member();
+		Member member1 = new Member();
 		member1.setId("member1");
 		member1.setPassword("member111");
 		member1.setName("뽀로로");
@@ -54,7 +54,7 @@ public class DataInitializeTest {
 			board.setContent("관리자가 등록한 게시글 내용" + i);
 			
 			boardRepo.save(board);
-		}*/
+		}
 	}
 	
 }
