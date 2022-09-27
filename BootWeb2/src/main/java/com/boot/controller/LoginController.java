@@ -1,13 +1,12 @@
 package com.boot.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.boot.domain.Member;
 import com.boot.service.MemberService;
@@ -43,9 +42,43 @@ public class LoginController {
 	}
 	
 	//로그아웃 처리
-	@GetMapping("/logout")
+	/*@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();	//모든 세션 삭제
 		return "redirect:";		//경로가 공백이면 '/' 경로와 같음
+	}*/
+	
+	@GetMapping("/logout")
+	public String logout(SessionStatus status) {
+		status.setComplete(); //모든 세션 삭제
+		return "redirect:";		//경로가 공백이면 '/' 경로와 같음
 	}
+	
+	//회원가입 페이지 요청
+	@GetMapping("/signup")
+	public String signupView() {
+		return "signup";
+	}
+	
+	//회원 가입 처리
+	@PostMapping("/signup")
+	public String signup(Member member) {
+		service.signup(member);
+		return "redirect:";
+	}	
+	
+	//나의 정보 페이지 요청
+	@GetMapping("/profile")
+	public String profile(String id, Model model) {
+		Member member = service.getMember(id);
+		model.addAttribute("member", member);	
+		return "profile";
+	}
+	
+	//내 정보 수정하기
+	/*@PostMapping("updateMember")
+	public String updateMember(Member member) {
+		service.updateMember(member);
+		return "redirect:";		
+	}*/
 }

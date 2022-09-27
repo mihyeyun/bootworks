@@ -6,14 +6,17 @@
 <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+	<!-- menu.html의 nav 태그 삽입 -->
+	<div th:replace="menu.html::nav"></div>
+	
 	<div id="container">
 		<h2>BootWeb2 main page</h2>
 	</div>
 	
-	<p>
+	<!-- <p>
 	<a th:href="@{/getBoardList}">게시판 바로가기 |</a>
 	<a th:href="@{/login}">로그인</a>&nbsp;
-	</p>
+	</p> -->
 	
 	<div class="main_img_container">
 		<img src="/static/images/bg2.jpg" class="main_img" id="pic">	

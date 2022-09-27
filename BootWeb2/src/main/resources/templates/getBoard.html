@@ -5,6 +5,9 @@
 <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+	<!-- menu.html의 nav 태그 삽입 -->
+	<div th:replace="menu.html::nav"></div>
+	
 	<div id="container">
 		<h2>getBoard page</h2>
 		<form th:action="@{/updateBoard}" method="post">

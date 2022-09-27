@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class Member {
 	
-	@Id		//PK(Primary Key)
+	@Id //PK(Primary Key)
 	private String id;
 	private String password;
 	private String name;

@@ -1,8 +1,10 @@
 package com.boot.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.boot.domain.Member;
@@ -25,5 +27,36 @@ public class MemberServiceImpl implements MemberService{
 		}else {
 			return null;
 		}
+	}
+
+	//회원 가입
+	@Override
+	public void signup(Member member) {
+		member.setRole("ROLE_USER"); 	//권한 설정
+		memberRepo.save(member);
+	}
+
+	//회원 목록 가져오기
+	@Override
+	public List<Member> getMemberList() {
+		return memberRepo.findAll();
+	}
+
+	//회원 상세 보기
+	@Override
+	public Member getMember(String id) {
+		return memberRepo.findById(id).get();
+	}
+
+	//회원 삭제하기
+	@Override
+	public void deleteMember(Member member) {
+		memberRepo.delete(member);
+	}
+
+	//회원 수정
+	@Override
+	public void updateMember(Member member) {
+		memberRepo.save(member);
 	}
 }
