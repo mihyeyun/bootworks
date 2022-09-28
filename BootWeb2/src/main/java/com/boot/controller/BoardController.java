@@ -8,18 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.boot.domain.Board;
 import com.boot.domain.Member;
 import com.boot.service.BoardService;
 
-import lombok.extern.slf4j.Slf4j;
-
 //'member'를 세션에 저장
-@SessionAttributes("member")
-@Slf4j
+@SessionAttributes("member")  
 @Controller
 public class BoardController {
 	
@@ -32,71 +28,60 @@ public class BoardController {
 		return new Member();
 	}
 	
-	
+	@GetMapping("/")
+	public String index() {
+		return "index";
+	}
+
+	//목록 보기
 	@GetMapping("/getBoardList")
 	public String getBoardList(Model model) {
-		log.info("getBoardList 진입");
 		List<Board> boardList = service.getBoardList();
 		model.addAttribute("boardList", boardList);
-		return "getBoardList"; // getBoardList.jsp
+		
+		return "getBoardList";   //getBoardList.jsp
 	}
 	
 	//새글 등록 폼 페이지 요청
 	@GetMapping("/insertBoard")
 	public String insertBoard(@ModelAttribute("member") Member member) {
-		log.info("insertBoard 페이지 진입");
 		//로그인한 사용자만 글쓰기 가능
 		if(member.getId() == null) {
 			return "redirect:login";
 		}else {
-			return "insertBoard";
-		}	
+			return "insertBoard";  // /board/inserBoard.jsp
+		}
 	}
 	
 	//새글 등록 처리
 	@PostMapping("/insertBoard")
 	public String insertBoard(Board board) {
-		log.info("insertBoard service 진입 요청");
 		service.insertBoard(board);
-		log.info("insertBoard service 진행 완료");
-		return "redirect:/getBoardList";
+		return "redirect:getBoardList";
 	}
 	
-	//상세 보기
+	//글 상세 보기
 	@GetMapping("/getBoard")
 	public String getBoard(Long seq, Model model) {
-		log.info("조회수 증가 요청");
-		service.updateCount(seq);
-		log.info("조회수 증가 완료");
-		log.info("getBoard 페이지 진입");
-		Board board = service.getBoard(seq);
-		model.addAttribute("board", board);
-		log.info("getBoard 조회 완료");
+		service.updateCount(seq);  //조회수 증가
+		Board board = service.getBoard(seq); //상세 처리
+		
+		model.addAttribute("board", board); //model - "board" 보냄
 		return "getBoard";
 	}
 	
-	//글 삭제하기
+	//글 삭제
 	@GetMapping("/deleteBoard")
 	public String deleteBoard(Board board) {
-		log.info("deleteBoard 페이지 진입");
+		//게시글 1개 객체 삭제
 		service.deleteBoard(board);
-		log.info("deleteBoard 진행 완료");
-		return "redirect:/getBoardList";
+		return "redirect:getBoardList";
 	}
 	
-	//글 수정하기
+	//글 수정
 	@PostMapping("/updateBoard")
 	public String updateBoard(Board board) {
-		log.info("updateBoard 페이지 진입");
 		service.updateBoard(board);
-		log.info("updateBoard 진행 완료");
-		return "redirect:/getBoardList";
+		return "redirect:getBoardList";
 	}
-	
-	//main 페이지 이동
-	/*@RequestMapping(value="/")
-	public String index() {
-		log.info("main 페이지 진입");
-		return "index";
-	}*/
 }

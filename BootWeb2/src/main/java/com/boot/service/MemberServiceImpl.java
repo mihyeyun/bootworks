@@ -44,7 +44,7 @@ public class MemberServiceImpl implements MemberService{
 
 	//회원 상세 보기
 	@Override
-	public Member getMember(String id) {
+	public Member getOne(String id) {
 		return memberRepo.findById(id).get();
 	}
 

@@ -16,7 +16,7 @@ public interface MemberService {
 	List<Member> getMemberList();
 	
 	//회원 상세 보기
-	Member getMember(String id);
+	Member getOne(String id);
 	
 	//회원 삭제
 	void deleteMember(Member member);
