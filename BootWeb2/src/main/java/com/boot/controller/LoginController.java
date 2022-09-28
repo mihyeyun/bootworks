@@ -78,4 +78,18 @@ public class LoginController {
 		return "memberView";		//index로 이동
 	}
 	
+	//회원 탈퇴
+	@GetMapping("/deleteMember")
+	public String deleteMember(Member member) {
+		service.deleteMember(member);
+		return "redirect:";		//index
+	}
+	
+	//회원 정보 수정
+		@PostMapping("/updateMember")
+		public String updateMember(Member member) {
+			service.updateMember(member);
+			return "redirect:";
+		}
+	
 }

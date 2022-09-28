@@ -55,8 +55,19 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	//회원 수정
+	/*@Override
+	public void updateMember(Member member) {
+		Member findMember = memberRepo.findById(member.getId()).get();
+		findMember.setId(member.getId());	
+		findMember.setPassword(member.getPassword());	
+		findMember.setName(member.getName());	
+
+		memberRepo.save(member);
+	}*/
+	
+	//회원 수정
 	@Override
 	public void updateMember(Member member) {
-		memberRepo.save(member);
+		memberRepo.save(member);	//가입과 수정 메소드가 같음
 	}
 }
