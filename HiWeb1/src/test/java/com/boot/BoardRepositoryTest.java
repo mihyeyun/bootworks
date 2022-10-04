@@ -101,7 +101,7 @@ public class BoardRepositoryTest {
 			board.setContent(member2.getName() + "이(가) 등록한 게시글 내용 " + i);
 			boardRepo.save(board);
 		}
-	}*/
+	}
 	
 	//상세 조회 테스트 : 게시글을 통해서 회원 정보 조회
 	@Test
@@ -127,7 +127,7 @@ public class BoardRepositoryTest {
 		for(Board board : member.getBoardList())
 			System.out.println("--->" + board.toString());
 			
-	}
+	}*/
 	
 }
 
