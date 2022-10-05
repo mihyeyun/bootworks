@@ -1,5 +1,7 @@
 package com.boot.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,6 @@ import com.boot.domain.Search;
 import com.boot.presistence.BoardRepository;
 import com.querydsl.core.BooleanBuilder;
 
-
 @Service
 public class BoardServiceImpl implements BoardService{
 	
@@ -27,13 +28,6 @@ public class BoardServiceImpl implements BoardService{
 	public List<Board> getBoardList() {
 		//글번호로 내림 차순 정렬
 		return boardRepo.findAll(Sort.by(Sort.Direction.DESC, "seq"));
-	}*/
-	
-	//페이지 처리
-	/*@Override
-	public Page<Board> getBoardList(Board board) {
-		Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "seq");
-		return boardRepo.getBoardList(pageable);
 	}*/
 	
 	@Override
@@ -59,7 +53,7 @@ public class BoardServiceImpl implements BoardService{
 		return boardRepo.findById(seq).get();
 	}
 
-	//글쓰기
+	//글 쓰기
 	@Override
 	public void insertBoard(Board board) {
 		boardRepo.save(board);
@@ -78,14 +72,11 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	//조회수
-	@Transactional
+	@Transactional  //트랜잭션 처리 어노테이션
 	@Override
 	public void updateCount(Long seq) {
 		boardRepo.updateCount(seq);
 	}
 
 	
-
-
-
 }

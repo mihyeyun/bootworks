@@ -23,46 +23,47 @@ public class BoardRepositoryTest {
 	@Autowired
 	private PasswordEncoder pwencoder;
 	
-	
 	//회원 및 게시글 등록
-	/*@Test
-	public void testInsert2() {		
+	@Test
+	public void testInsert2() {
 		//회원
 		Member member1 = new Member();
 		member1.setId("member");
-		member1.setPassword(pwencoder.encode("member12"));	//비밀번호 암호화
-		member1.setName("윤미혜");
+		member1.setPassword(pwencoder.encode("member12"));  //비밀번호 암호화
+		member1.setName("김기용");
 		member1.setRole(Role.ROLE_MEMBER);
 		member1.setEnabled(true);
 		memberRepo.save(member1);
 		
 		//관리자
 		Member member2 = new Member();
-		member2.setId("admin");
-		member2.setPassword(pwencoder.encode("admin12"));	//비밀번호 암호화
+		member2.setId("admin2");
+		member2.setPassword(pwencoder.encode("admin12"));  //비밀번호 암호화
 		member2.setName("관리자");
 		member2.setRole(Role.ROLE_ADMIN);
 		member2.setEnabled(true);
 		memberRepo.save(member2);
 		
-		//회원이 등록한 게시글 
+		//회원이 등록한 게시글
 		for(int i=1; i<=10; i++) {
 			Board board = new Board();
 			board.setMember(member1);
-			board.setTitle(member1.getName() + "이 등록한 게시글" + i);
-			board.setContent(member1.getName() + "이 등록한 게시글 내용" + i);
+			board.setTitle(member1.getName() + "이 등록한 게시글 " + i);
+			board.setContent(member1.getName() + "이 등록한 게시글 내용 " + i);
 			boardRepo.save(board);
 		}
-		
-		//관리자가 등록한 게시글 
+		//관리자가 등록한 게시글
 		for(int i=1; i<=3; i++) {
 			Board board = new Board();
 			board.setMember(member2);
-			board.setTitle(member2.getName() + "이 등록한 게시글" + i);
-			board.setContent(member2.getName() + "이 등록한 게시글 내용" + i);
+			board.setTitle(member2.getName() + "이 등록한 게시글 " + i);
+			board.setContent(member2.getName() + "이 등록한 게시글 내용 " + i);
 			boardRepo.save(board);
 		}
-	}*/
+		
+	}
+	
+	
 	
 	/*@Test
 	public void testInsert() {
@@ -101,7 +102,9 @@ public class BoardRepositoryTest {
 			board.setContent(member2.getName() + "이(가) 등록한 게시글 내용 " + i);
 			boardRepo.save(board);
 		}
-	}
+	}*/
+	
+	
 	
 	//상세 조회 테스트 : 게시글을 통해서 회원 정보 조회
 	@Test
@@ -127,7 +130,7 @@ public class BoardRepositoryTest {
 		for(Board board : member.getBoardList())
 			System.out.println("--->" + board.toString());
 			
-	}*/
+	}
 	
 }
 

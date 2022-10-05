@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 	<meta charset="utf-8">
 	<title>메인 페이지</title>
-	<link rel="stylesheet" href="/static/css/style.css">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 	<div id="container">
 		<h2>게시글 목록</h2>
 		<p>
 			<span sec:authorize="isAuthenticated()">
-			<font color="red"><span sec:authentication="principal.member.name" class="name"></span></font>님 환영합니다!<br>			
-			<a th:href="@{/system/logout}">[로그아웃]</a>&nbsp;&nbsp;
-			<a th:href="@{/admin/adminPage}">[게시판 관리]</a>
+			<font color="red">
+				[<span sec:authentication="principal.member.name" class="name"></span>]
+			</font>님 환영합니다.....
+			<a th:href="@{/system/logout}">로그아웃</a>&nbsp;&nbsp;
+			<a th:href="@{/admin/adminPage}">게시판 관리</a>
 			</span>
 		</p>
 		<hr>
@@ -25,7 +27,7 @@
 			</select>
 			<input type="text" name="searchKeyword" class="keyword">
 			<button type="submit">검색</button>
-		</form>		
+		</form>
 		<!-- 검색 폼 종료 -->
 		<table class="tbl_list">
 			<thead>

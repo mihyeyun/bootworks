@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+*{margin: 0; padding: 0}
+.header{width:100vw; height: 20vh; background-color: pink;}
+.content{width:100vw; height: 70vh; background-color: black; color: white}
+.footer{width:100vw; height: 10vh; background-color: lightgreen;}

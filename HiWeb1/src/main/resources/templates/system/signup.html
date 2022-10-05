@@ -3,13 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>회원 가입</title>
-	<link rel="stylesheet" href="/static/css/style.css">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 	<div id="container">
 		<h2>회원 가입</h2>
 		<form th:action="@{/system/signup}" method="post">
-		<input type="hidden" name="{_csrf.parameterName}" value="${_csrf.token}">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<table class="tbl_signup">
 				<tr>
 					<td th:text="아이디">
@@ -21,7 +21,8 @@
 				</tr>
 				<tr>
 					<td th:text="'비밀번호 확인'">
-					<td><input type="password" name="password_confirm" placeholder="PASSWORD_CONFIRM"></td>
+					<td><input type="password" name="password_confirm"
+					           placeholder="PASSWORD_CONFIRM"></td>
 				</tr>
 				<tr>
 					<td th:text="이름">

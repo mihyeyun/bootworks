@@ -10,10 +10,10 @@ import com.boot.service.MemberService;
 
 @Controller
 public class SecurityController {  //LoginController 역할
-
+	
 	@Autowired
 	private MemberService memberService;
-	
+
 	//로그인
 	@GetMapping("/system/login")
 	public void login() {}  //system/login.html 작성
@@ -34,6 +34,7 @@ public class SecurityController {  //LoginController 역할
 		memberService.signup(member);
 		return "redirect:login";
 	}
+	
 	//관리자 페이지 요청
 	@GetMapping("/admin/adminPage")
 	public void admin() {}
@@ -41,5 +42,4 @@ public class SecurityController {  //LoginController 역할
 	//권한 없음 페이지 요청
 	@GetMapping("/system/accessDenied")
 	public void accessDenied() {}
-	
 }

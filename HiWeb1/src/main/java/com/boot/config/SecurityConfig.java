@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		//사용자 정의 userDetailsService 객체 사용함
 		security.userDetailsService(userDetailsService);
 		
-		//security.csrf().disable();  //csrf 비활성화
+		//security.csrf().disable();  //csrf 활성화
 		//로그인 후 게시글 목록 페이지로 이동(인증)
 		security.formLogin().loginPage("/system/login")
 				.defaultSuccessUrl("/board/getBoardList", true);
@@ -36,9 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/admin/**").hasRole("ADMIN");
 		//접근 권한 없음
 		security.exceptionHandling()
-				.accessDeniedPage("/system/accessDenied");
-		
+		        .accessDeniedPage("/system/accessDenied");
 	}
+	
 	//비밀번호 암호화 객체 반환해줌
 	@Bean
 	public PasswordEncoder passwordEncoder() {
