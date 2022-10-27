@@ -30,7 +30,7 @@ public class DataInitializeTest {
 		Member member1 = new Member();
 		member1.setUserid("member");
 		member1.setPassword(pwencoder.encode("member12"));  //비밀번호 암호화
-		member1.setName("윤미혜");
+		member1.setName("김기용");
 		member1.setRole(Role.ROLE_MEMBER);
 		member1.setEnabled(true);
 		memberRepo.save(member1);

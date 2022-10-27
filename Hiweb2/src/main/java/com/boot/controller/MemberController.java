@@ -19,7 +19,12 @@ public class MemberController {
 	
 	//로그인
 	@GetMapping("/login")
-	public void login() {}  //templates/member/login.html
+	public void login(String error, Model model) {
+		if(error != null) {
+			model.addAttribute("error", "아이디나 비밀번호를 확인해주세요");
+		}
+		
+	}  //templates/member/login.html
 	
 	//로그아웃
 	@GetMapping("/logout")
@@ -31,6 +36,7 @@ public class MemberController {
 	@GetMapping("/signup")
 	public void signup() {}  //member/signup.html
 	
+	//회원 가입 처리
 	@PostMapping("/signup")
 	public String signup(Member member, Model model) {
 		memberService.signup(member);
@@ -38,6 +44,7 @@ public class MemberController {
 		return "member/result";
 	}
 	
+	//회원 정보 보기
 	@GetMapping("/view")
 	public String view(String userid, Model model) {
 		Member member = memberService.view(userid);
@@ -45,6 +52,7 @@ public class MemberController {
 		return "member/view";  //member/view.html
 	}
 	
+	//회원 정보 수정
 	@PostMapping("/update")
 	public String update(Member member, Model model) {
 		memberService.update(member);
@@ -59,3 +67,9 @@ public class MemberController {
 		return "member/result";
 	}
 }
+
+
+
+
+
+

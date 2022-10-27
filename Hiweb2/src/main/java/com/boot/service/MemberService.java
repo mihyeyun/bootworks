@@ -8,7 +8,7 @@ public interface MemberService {
 	
 	Member view(String userid);  //상세 보기
 	
-	void update(Member member);	 //정보 수정
+	void update(Member member);  //회원 정보 수정
 	
-	void delete(Member member);	 //회원 삭제
+	void delete(Member member);  //회원 정보 삭제
 }

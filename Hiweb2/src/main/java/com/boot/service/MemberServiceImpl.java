@@ -1,7 +1,5 @@
 package com.boot.service;
 
-import java.time.LocalDateTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,7 +24,6 @@ public class MemberServiceImpl implements MemberService{
 		member.setPassword(encPW);
 		member.setRole(Role.ROLE_MEMBER); //권한 설정
 		member.setEnabled(true);   //계정 있음
-		member.setRegDate(LocalDateTime.now()); 
 		memberRepo.save(member);
 	}
 
@@ -35,9 +32,10 @@ public class MemberServiceImpl implements MemberService{
 		return memberRepo.findById(userid).get();
 	}
 
+	//회원 정보 수정
 	@Override
 	public void update(Member member) {
-		//수정시에 권한, 암호화, 계정 모두 설정해줘야함
+		//수정시에도 비밀번호 암호화, 권한, 계정은 필수 저장
 		String encPW = pwencoder.encode(member.getPassword());
 		member.setPassword(encPW);
 		member.setRole(Role.ROLE_MEMBER); //권한 설정
@@ -45,9 +43,9 @@ public class MemberServiceImpl implements MemberService{
 		memberRepo.save(member);
 	}
 
+	//회원 정보 삭제
 	@Override
 	public void delete(Member member) {
 		memberRepo.delete(member);
 	}
-
 }
